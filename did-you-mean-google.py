@@ -1,14 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-class didumean:
-    def __init__(self,query):
+
+
+class Didumean:
+    def __init__(self, query):
         self.s = requests.session()
         self.s.headers['User-Agent'] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
         self.url = 'https://www.google.co.in/search?q='
         self.query = self.url+str(query).replace(' ', '+')
         self.answer = self.search_for_text()
-
 
     def serach_google(self):
         search_result = self.s.get(self.query)
@@ -32,9 +33,10 @@ class didumean:
         return result
 
 
+if __name__ == '__main__':
+    query = input('Enter Your Query: ')
+    print(Didumean(query).answer)
 
-d = didumean('fotball').answer
-print(d)
 
 
 
